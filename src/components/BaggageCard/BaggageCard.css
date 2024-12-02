@@ -1,0 +1,32 @@
+.baggage-card {
+    background-color: #e9f0f7;
+    border-radius: 20px;
+    width: 300px;
+    padding: 20px;
+    text-align: center;
+    margin: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.baggage-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.baggage-card img {
+    height: 150px;
+    width: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.baggage-card h3 {
+    margin: 15px 0 10px;
+    font-size: 20px;
+    color: #2c4f91;
+}
+
+.baggage-card p {
+    font-size: 18px;
+    color: #2c4f91;
+}

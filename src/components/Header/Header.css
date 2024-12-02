@@ -1,0 +1,23 @@
+header {
+    background-color: #14A0E6;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    text-decoration: none;
+}
+
+.nav-link {
+    text-decoration: none; /* Убираем подчеркивание */
+    color: white; /* Цвет текста */
+}
+.nav-links .nav-link {
+    margin-right: 10px; /* Отступ между кнопками */
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
