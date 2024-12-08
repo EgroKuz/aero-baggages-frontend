@@ -1,24 +1,34 @@
-import React from 'react';
-import './BaggageCard.css';
-const default_image = "/images/default_image.jpg"
+import { Component } from "react";
+import "./BaggageCard.css";
 
-interface BaggageCardProps {
-    baggage: {
-        id: number;
-        image: string;
-        weight: number;
-        description: string;
-    };
+const default_image = "/images/default_image.jpg";
+
+interface Baggage {
+  id: number;
+  image: string;
+  weight: number;
+  description: string;
 }
 
-const BaggageCard: React.FC<BaggageCardProps> = ({ baggage }) => {
+interface BaggageCardProps {
+  baggage: Baggage;
+}
+
+class BaggageCard extends Component<BaggageCardProps> {
+  render() {
+    const { baggage } = this.props;
+
     return (
-        <div className="baggage-card">
-            <img src={baggage.image|| default_image} alt={`Багаж ${baggage.weight} кг`} />
-            <h3>Вес {baggage.weight} кг</h3>
-            <p>{baggage.description}</p>
-        </div>
+      <div className="baggage-card">
+        <img
+          src={baggage.image || default_image}
+          alt={`Багаж ${baggage.weight} кг`}
+        />
+        <h3>Вес {baggage.weight} кг</h3>
+        <p>{baggage.description}</p>
+      </div>
     );
-};
+  }
+}
 
 export default BaggageCard;
