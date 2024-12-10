@@ -3,7 +3,7 @@ export interface Baggage {
     weight: number;
     number: string;
     description: string;
-    image: string;
+    image: string | null;
   }
 
   
@@ -12,7 +12,7 @@ export interface Baggage {
   }
 
   export const getBaggagesByWeight = async (weight = ''): Promise<BaggageResult> => {
-    const url = `/api/baggages/?baggage_weight=${encodeURIComponent(weight)}`;
+    const url = `http://127.0.0.1:8000/api/baggages/?baggage_weight=${encodeURIComponent(weight)}`;
     return fetch(url)
         .then((response) => response.json())
         .then((data) => ({
@@ -21,7 +21,7 @@ export interface Baggage {
 };
 
   export const getBaggageById = async (baggageId: number | string): Promise<Baggage> => {
-    const url = `/api/baggages/${encodeURIComponent(baggageId)}`;
+    const url = `http://127.0.0.1:8000/api/baggages/${encodeURIComponent(baggageId)}`;
     return fetch(url)
       .then((response) => response.json());
   };

@@ -5,6 +5,7 @@ import { Baggage, getBaggageById } from '../../modules/airBaggagesAPI';
 import './BaggagePage.css';
 import { BreadCrumbs } from "../../components/BreadCrumbs/BreadCrumbs";
 import { ROUTES, ROUTE_LABELS } from "../../Routes";
+const default_image = "/images/default_image.jpg"
 
 
 const BaggagePage: React.FC = () => {
@@ -42,7 +43,7 @@ const BaggagePage: React.FC = () => {
         />
             <div className="baggage-details">
                 <div className="baggage-image">
-                    <img src={pageData.image} alt={`Багаж ${pageData.weight} кг`} />
+                    <img src={pageData.image || default_image} alt={`Багаж ${pageData.weight} кг`} />
                 </div>
                 <div className="baggage-info">
                     <h2>Вес: {pageData.weight} кг</h2>

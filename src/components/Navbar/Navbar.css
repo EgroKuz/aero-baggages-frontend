@@ -1,3 +1,7 @@
+.custom-navbar .dropdown-menu .dropdown-item {
+  list-style-type: none; /* Убирает маркер (точку) */
+}
+
 .custom-navbar {
     background-color: #ffffff;
   }

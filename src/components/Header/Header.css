@@ -2,12 +2,21 @@ header {
     background-color: #14A0E6;
     color: white;
     display: flex;
+    width: 100%;
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
     text-decoration: none;
+    position: fixed;
+    top: 0; /* Чтобы хедер располагался вверху страницы */
+    left: 0;
+    z-index: 1000; /* Для обеспечения того, чтобы хедер был поверх других элементов */
 }
 
+/* Стиль для контента, который должен быть ниже хедера */
+main {
+    margin-top: 70px; /* Добавляем отступ, чтобы контент не перекрывался хедером */
+}
 .nav-link {
     text-decoration: none; /* Убираем подчеркивание */
     color: white; /* Цвет текста */

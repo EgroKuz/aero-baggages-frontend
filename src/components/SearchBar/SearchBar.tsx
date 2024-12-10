@@ -1,37 +1,34 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import './SearchBar.css';
+import { useDispatch } from 'react-redux';
+import { setWeight } from '../../slices/baggagesSlice';
 
-interface SearchBarProps {
-    baggageWeight: string;
-    setBaggageWeight: (value: string) => void;
-    onKeyDown: (event: React.KeyboardEvent<HTMLInputElement>) => void;
-}
 
-class SearchBar extends Component<SearchBarProps> {
-    handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const { setBaggageWeight } = this.props;
-        setBaggageWeight(event.target.value); // Обновление значения через пропс
+
+const SearchBar: React.FC = () => {
+    const [inputValue, setInputValue] = useState<string>('');
+    const dispatch = useDispatch();
+
+    const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            dispatch(setWeight(inputValue));
+        }
     };
 
-    render() {
-        const { baggageWeight, onKeyDown } = this.props;
-
-        console.log("Current baggageWeight:", baggageWeight); // Отладочное сообщение
-
-        return (
-            <div className="search-cart-container">
-                <form>
-                    <input
-                        type="text"
-                        placeholder="Поиск багажа по весу..."
-                        value={baggageWeight}
-                        onChange={this.handleInputChange} // Обработчик изменения
-                        onKeyDown={onKeyDown} // Обработчик события клавиатуры
-                    />
-                </form>
-            </div>
-        );
-    }
-}
+    return (
+        <div className="search-cart-container">
+            <form>
+                <input 
+                    type="text" 
+                    placeholder="Поиск багажа по весу..." 
+                    value={inputValue} 
+                    onChange={(e) => setInputValue(e.target.value)} 
+                    onKeyDown={handleKeyDown} // Attach onKeyDown here
+                />
+            </form>
+        </div>
+    );
+};
 
 export default SearchBar;

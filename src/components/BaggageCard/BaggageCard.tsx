@@ -1,11 +1,11 @@
 import { Component } from "react";
 import "./BaggageCard.css";
 
-const default_image = "/images/default_image.jpg";
+const default_image = "./images/default_image.jpg";
 
 interface Baggage {
   id: number;
-  image: string;
+  image: string | null;
   weight: number;
   description: string;
 }
