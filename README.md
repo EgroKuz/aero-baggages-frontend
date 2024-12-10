@@ -1,50 +1,12 @@
-# React + TypeScript + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+Данная система предназначена для хранения информации о багажах, доступных для отправки. Операторы обращаются к сервису с целью добавления багажа в отправку, а также менять их хрупкость. Также оператор может потом смотреть свои созданные отправки. Агент по багажу может либо отклонять, либо завершать их сформированные отправки. Также агент по багажу может просматривать отправки абсолютно всех операторов.
+# Лабораторные
+## [Бэкенд (основной сервис)] (https://github.com/EgroKuz/aero-baggages-backend)
+- [SSR (лаб 1)] (https://github.com/EgroKuz/aero-baggages-backend/tree/SSR)
+- [База данных (лаб 2)] (https://github.com/EgroKuz/aero-baggages-backend/tree/Database)
+- [Веб-сервис REST-API (лаб 3)] (https://github.com/EgroKuz/aero-baggages-backend/tree/DRF)
+- [Аутентификация и авторизация (лаб 4)] (https://github.com/EgroKuz/aero-baggages-backend/tree/Auth)
+## [Фронтенд] (https://github.com/EgroKuz/aero-baggages-frontend)
+- [SPA (лаб 5)] (https://github.com/EgroKuz/aero-baggages-frontend/tree/SPA)
+- [PWA (лаб 6)] (https://github.com/EgroKuz/aero-baggages-frontend/tree/PWA)
+- [github-pages (лаб 6)] (https://github.com/EgroKuz/aero-baggages-frontend/tree/gh-pages)
+- [Tauri (лаб 6)] (https://github.com/EgroKuz/aero-baggages-frontend/tree/Tauri)
