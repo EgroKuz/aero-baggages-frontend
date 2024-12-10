@@ -10,3 +10,4 @@
 - [PWA (лаб 6)](https://github.com/EgroKuz/aero-baggages-frontend/tree/PWA)
 - [github-pages (лаб 6)](https://github.com/EgroKuz/aero-baggages-frontend/tree/gh-pages)
 - [Tauri (лаб 6)](https://github.com/EgroKuz/aero-baggages-frontend/tree/Tauri)
+ 
