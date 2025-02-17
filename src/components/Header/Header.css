@@ -5,7 +5,7 @@ header {
     width: 100%;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
+    padding: 0px 20px 0px 10px;
     text-decoration: none;
     position: fixed;
     top: 0; /* Чтобы хедер располагался вверху страницы */
@@ -18,8 +18,10 @@ main {
     margin-top: 70px; /* Добавляем отступ, чтобы контент не перекрывался хедером */
 }
 .nav-link {
+    
     text-decoration: none; /* Убираем подчеркивание */
-    color: white; /* Цвет текста */
+    color: white;
+    font-size: 18px; /* Цвет текста */
 }
 .nav-links .nav-link {
     margin-right: 10px; /* Отступ между кнопками */
@@ -29,4 +31,10 @@ main {
     display: flex;
     align-items: center;
 }
+.logo img {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
 

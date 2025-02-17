@@ -1,38 +1,112 @@
-import { Component } from "react";
-import "./navbar.css";
-import Container from "react-bootstrap/Container";
-import Navbar from "react-bootstrap/Navbar";
-import Nav from "react-bootstrap/Nav";
-import NavDropdown from "react-bootstrap/NavDropdown";
-import { Link } from "react-router-dom";
+import { NavLink } from 'react-router-dom';
+import { ROUTES } from "../../Routes";
+import { useAppSelector, useAppDispatch } from "../../store/store.ts";
+import { handleLogout } from "../../store/slices/userSlice.ts";
+import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import './Navbar.css';
 
-class BasicNavbar extends Component {
-  render() {
-    return (
-      <Navbar expand="lg" className="custom-navbar" fixed="top">
-        <Container fluid>
-          <Navbar.Brand as={Link} to="/">
-            <img src="/images/logo.png" alt="Logo" height="40" />
-          </Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="ms-auto">
-              <NavDropdown
-                title={<span className="custom-dropdown-title">Страницы</span>}
-                id="basic-nav-dropdown"
-                align="end"
-                menuVariant="light"
-              >
-                <NavDropdown.Item as={Link} to="/baggages">
-                  Багажи
-                </NavDropdown.Item>
-              </NavDropdown>
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
-    );
-  }
-}
+export const BasicNavbar = () => {
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const isAuthenticated = useAppSelector((state) => state.user.is_authenticated);
+  const username = useAppSelector((state) => {
+    return state.user.username;
+});
+
+
+  const logout = async (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    await dispatch(handleLogout());
+    navigate(ROUTES.HOME);
+  };
+
+  return (
+    <nav className="nav">
+      <div className="nav__icon">
+        <Link to="/" className="baggage-link">
+                <div className="logo">  
+                   <h1>Аэробагажник</h1>
+                </div>
+          </Link>
+      </div>
+      <div className="nav__wrapper">
+        <div className="nav__links">
+          <NavLink to={ROUTES.BAGGAGES} className="nav__link" end>
+            Багажи
+          </NavLink>
+
+          {isAuthenticated ? (
+            <>
+              <div className="nav-item">
+                <NavLink  to={`${ROUTES.TRANSFERS}`} className="nav__link">
+                    Заявки
+                </NavLink>
+              </div>
+              <div className="nav-item">
+                  <NavLink  to={ROUTES.PROFILE} className="nav__link">
+                      Профиль: { username }
+                  </NavLink>
+              </div>
+              <a href={ROUTES.HOME} className="nav__link" onClick={logout}>
+                Выйти
+              </a>
+            </>
+          ) : (
+            <>
+              <NavLink to={ROUTES.LOGIN} className="nav__link" end>
+                Войти
+              </NavLink>
+              <NavLink to={ROUTES.REGISTER} className="nav__link" end>
+                Регистрация
+              </NavLink>
+            </>
+          )}
+        </div>
+        <div
+          className="nav__mobile-wrapper"
+          onClick={(event) => event.currentTarget.classList.toggle('active')}
+        >
+          <div className="nav__mobile-target" />
+          <div className="nav__mobile-menu">
+            <NavLink to={ROUTES.HOME} className="nav__link" end>
+              Главная
+            </NavLink>
+            <NavLink to={ROUTES.BAGGAGES} className="nav__link" end>
+              Багажи
+            </NavLink>
+
+            {isAuthenticated ? (
+              <>
+                <div className="nav-item">
+                  <NavLink  to={`${ROUTES.TRANSFERS}`} className="nav__link">
+                      Заявки
+                  </NavLink>
+                </div>
+                <div className="nav-item">
+                  <NavLink  to={ROUTES.PROFILE} className="nav__link">
+                      {username}
+                  </NavLink>
+                </div>
+                <a href={ROUTES.HOME} className="nav__link" onClick={logout}>
+                  Выйти
+                </a>
+              </>
+            ) : (
+              <>
+                <NavLink to={ROUTES.LOGIN} className="nav__link" end>
+                  Войти
+                </NavLink>
+                <NavLink to={ROUTES.REGISTER} className="nav__link" end>
+                  Регистрация
+                </NavLink>
+              </>
+            )}
+          </div>
+        </div>
+      </div>
+    </nav>
+  );
+};
 
 export default BasicNavbar;

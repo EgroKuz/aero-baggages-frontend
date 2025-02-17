@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './SearchBar.css';
 import { useDispatch } from 'react-redux';
-import { setWeight } from '../../slices/baggagesSlice';
+import { setWeight } from '../../store/slices/baggagesSlice';
 
 
 

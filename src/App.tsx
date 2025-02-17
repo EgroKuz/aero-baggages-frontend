@@ -1,42 +1,36 @@
-import { BrowserRouter , Route, Routes } from 'react-router-dom';
-import Header from './components/Header/Header';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { HomePage } from './pages/HomePage/HomePage';
 import BaggagePage from './pages/BaggagePage/BaggagePage';
+import LoginPage from './pages/LoginPage/LoginPage';
+import { ProfilePage } from './pages/ProfilePage/ProfilePage';
+import RegisterPage from './pages/RegisterPage/RegisterPage';
 import BaggagesPage from './pages/BaggagesPage/BaggagesPage';
+import TransferPage from "./pages/TransferPage/TransferPage";
+import TransfersPage from "./pages/TransfersPage/TransfersPage";
+import ForbiddenPage from './pages/ForbiddenPage/ForbiddenPage';
+import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import { ROUTES } from "./Routes";
-import { useEffect } from "react";
 import { dest_root } from "../target_config";
+import BasicNavbar from './components/Navbar/Navbar';
 
-function App() {
-
-    useEffect(() => {
-        if (typeof window !== 'undefined' && (window as any).__TAURI__?.tauri) {
-          const { invoke } = (window as any).__TAURI__.tauri;
-          
-          invoke('tauri', { cmd: 'create' })
-            .then((response: any) => console.log(response))
-            .catch((error: any) => console.log(error));
-    
-          return () => {
-            invoke('tauri', { cmd: 'close' })
-              .then((response: any) => console.log(response))
-              .catch((error: any) => console.log(error));
-          };
-        }
-      }, []);
-
+const App: React.FC = () => {
     return (
         <BrowserRouter basename={dest_root}> 
-            <Header />
+           <BasicNavbar />
             <Routes>
                 <Route path={ROUTES.HOME} element={<HomePage />} />
                 <Route path={ROUTES.BAGGAGES} element={<BaggagesPage />} />
+                <Route path={ROUTES.LOGIN} element={<LoginPage />} />
+                <Route path={ROUTES.REGISTER} element={<RegisterPage />} />
+                <Route path={ROUTES.PROFILE} element={<ProfilePage />} />
                 <Route path={`${ROUTES.BAGGAGES}/:id`} element={<BaggagePage />} />
+                <Route path={`${ROUTES.TRANSFERS}/:id`} element={<TransferPage />} />
+                <Route path={ROUTES.TRANSFERS} element={<TransfersPage />} />
+                <Route path={ROUTES.PAGE403} element={<ForbiddenPage />} />
+                <Route path={ROUTES.PAGE404} element={<NotFoundPage />} />
             </Routes>
         </BrowserRouter>
     );
 };
-
-
 
 export default App;

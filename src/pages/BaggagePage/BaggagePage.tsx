@@ -36,10 +36,10 @@ const BaggagePage: React.FC = () => {
     return (
         <main>
             <BreadCrumbs
-          crumbs={[
-            { label: ROUTE_LABELS.BAGGAGES, path: ROUTES.BAGGAGES },
-            { label: "Вес " + pageData?.weight.toString() + " кг" },
-          ]}
+                crumbs={[
+                    { label: ROUTE_LABELS.BAGGAGES, path: ROUTES.BAGGAGES },
+                    { label: "Вес " + pageData?.weight.toString() + " кг" },
+                ]}
         />
             <div className="baggage-details">
                 <div className="baggage-image">

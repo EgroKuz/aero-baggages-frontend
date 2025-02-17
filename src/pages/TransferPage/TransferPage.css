@@ -1,0 +1,126 @@
+.shipment-container {
+    font-family: Arial, sans-serif;
+    padding-top: 66px;
+    min-height: 100vh; 
+    display: flex; 
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .no-wrap {
+  white-space: nowrap;
+  color: #2c4f91;
+  }
+  
+  
+  .shipment-data {
+    min-height: 70vh; 
+    padding-left: 70px;
+    padding-right: 70px;
+  }
+  
+  .shipment-form {
+  margin-bottom: 10px;
+  font-family: "Inter", "Source Sans Pro", "Helvetica";
+  }
+  
+  .shipment-form {
+  display: flex;
+  flex-wrap: wrap;
+  }
+  
+  .shipment-form-group {
+  display: flex;
+  align-items: center;
+  margin-right: 30px;
+  }
+  
+  .shipment-form-group label {
+  margin-right: 10px;
+  font-weight: 600;
+  }
+  
+  .delivery-cards {
+  margin-bottom: 20px;
+  }
+  
+  label[for="delivery"],
+  label[for="dispatch"] {
+  font-weight: normal;
+  }
+  
+  .shipment-form-group input[type="radio"] {
+  margin-right: 5px;
+  }
+  
+  .shipment-form-group input[type="text"],
+  .shipment-form-group input[type="date"] {
+  text-align: left;
+  margin-top: 5px;
+  height: 20px;
+  border: 1px solid #14A0E6; /* Синий цвет рамки */
+  border-radius: 10px; /* Закругление углов */
+  padding: 5px;
+  font-size: 16px;
+  }
+  
+  .bottom{
+    display: flex;
+    justify-content: center;
+  }
+
+  .shipment-buttons {
+    margin: 0px 50px 20px 50px;
+  }
+  
+  .quantity-row {
+    display: flex;
+    align-items: center;
+  }
+  
+  .quantity-controls input {
+    margin-left: 10px;
+    width: 60px;
+    height: 30px;
+  }
+
+  .head{
+    margin-bottom: 30px;
+  }
+
+  .save-button {
+    margin-top: 10px;
+    border: none;
+    margin-left: 90%;
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 10px 20px;
+    background-color: #14A0E6;
+    color: white;
+    position: relative;
+    }
+
+.delete-button {
+  margin-top: 5px;
+  margin-right: 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  padding: 10px 20px;
+  background-color: #2c4f91;
+  color: white;
+  position: relative;
+  }
+
+
+.send-button {
+  margin-top: 10px;
+  margin-right: 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  padding: 10px 20px;
+  background-color: #14A0E6;
+  color: white;
+  position: relative;
+  }

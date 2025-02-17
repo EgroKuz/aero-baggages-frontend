@@ -3,6 +3,11 @@
     justify-content: center;
     align-items: center;
     margin-top: 40px;
+    background-color: #e9f0f7;
+    border-radius: 20px;
+    width: 80%;
+    padding: 20px;
+    margin-left: 10%;
 }
 
 
@@ -19,6 +24,7 @@
 }
 
 .baggage-info h2 {
+    color: #2c4f91;
     text-align: start;
     font-size: 24px;
     margin-bottom: 10px;
