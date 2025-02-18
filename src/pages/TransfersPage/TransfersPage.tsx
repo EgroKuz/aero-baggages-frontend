@@ -183,7 +183,8 @@ const TransfersPage: FC = () => {
                             <td>Дата отправки</td>
                             <td>Рейс</td>
                             <td>Владелец</td>
-                            <td>Самый тяжелый багаж</td>
+                            <td>Наибольший вес</td>
+                            <td>QR</td>
                             {is_staff && <td>Действия</td>}
                         </tr>
                         </thead>
@@ -206,6 +207,19 @@ const TransfersPage: FC = () => {
                             <td>{transfer.flight}</td>
                             <td>{transfer.owner_name}</td>
                             <td>{transfer.heaviest_baggage}</td>
+                            <td>
+                              {transfer.qr ? (
+                                <div className="qr-hover-wrapper">
+                                  <img className="status-icon" src="/images/qr.svg" alt="QR Icon" />
+                                  <div className="qr-hover">
+                                    <img className="qr-code" src={`data:image/png;base64,${transfer.qr}`} alt="QR Code" />
+                                    <p>Нажмите для увеличения</p>
+                                  </div>
+                                </div>
+                              ) : (
+                                <img className="status-icon" src="/images/time.svg" alt="Time Icon" />
+                              )}
+                            </td>
                             {is_staff && transfer.status === "formed" && (
                       <td>
                         <button
@@ -230,7 +244,7 @@ const TransfersPage: FC = () => {
                     )}
                             </tr>
                         ))}
-                        </tbody>
+                      </tbody>
                     </table>
                 ): (
                   <h3 className="text-center mt-5">Отправки не найдены!</h3>

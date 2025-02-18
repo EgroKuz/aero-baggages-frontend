@@ -21,6 +21,7 @@ export type T_Baggage = {
     moderator: string
     user: string
     heaviest_baggage: number
+    qr?: string // Новое поле
     baggages: T_Baggage[]
   }
   

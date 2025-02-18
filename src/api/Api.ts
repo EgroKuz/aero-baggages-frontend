@@ -138,6 +138,8 @@ export interface Transfer {
    * @max 2147483647
    */
   heaviest_baggage?: number | null;
+  /** Qr */
+  qr?: string | null;
 }
 
 export interface BaggageTransfer {
