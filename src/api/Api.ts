@@ -185,11 +185,15 @@ export interface User {
    */
   username: string;
   /**
-   * Staff status
-   * Designates whether the user can log into this admin site.
+   * Is staff
    * @default false
    */
   is_staff?: boolean;
+  /**
+   * Is superuser
+   * @default false
+   */
+  is_superuser?: boolean;
 }
 
 import type { AxiosInstance, AxiosRequestConfig, AxiosResponse, HeadersDefaults, ResponseType } from "axios";

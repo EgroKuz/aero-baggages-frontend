@@ -10,6 +10,7 @@ export const BAGGAGES_MOCK = {
             description: "Красный чемодан",
             active_add: false, // Добавлено поле
             fragility: false,
+            status: true,
           },
           {
             id: 2,
@@ -19,6 +20,7 @@ export const BAGGAGES_MOCK = {
             description: "Синий чемодан",
             active_add: false, // Добавлено поле
             fragility: false,
+            status: true,
           },
           {
             id: 3,
@@ -28,6 +30,7 @@ export const BAGGAGES_MOCK = {
             description: "Серый чемодан",
             active_add: false, // Добавлено поле
             fragility: false,
+            status: true,
           },
           {
             id: 4,
@@ -37,6 +40,7 @@ export const BAGGAGES_MOCK = {
             description: "Черный чемодан",
             active_add: false, // Добавлено поле
             fragility: false,
+            status: true,
           },
     ]
 }

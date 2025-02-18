@@ -20,7 +20,6 @@ export type T_Baggage = {
     transfer_date: string
     moderator: string
     user: string
-    owner: string
     heaviest_baggage: number
     baggages: T_Baggage[]
   }
@@ -31,6 +30,7 @@ export type T_Baggage = {
     email: string
     password: string,
     is_authenticated: boolean
+    is_staff: boolean;
     validation_error: boolean
     validation_success: boolean
     checked: boolean

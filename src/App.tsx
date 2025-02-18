@@ -12,6 +12,8 @@ import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import { ROUTES } from "./Routes";
 import { dest_root } from "../target_config";
 import BasicNavbar from './components/Navbar/Navbar';
+import EditBaggagesPage from './pages/EditBaggagesPage/EditBaggagesPage';
+import EditBaggagePage from './pages/EditBaggagePage/EditBaggagePage';
 
 const App: React.FC = () => {
     return (
@@ -28,6 +30,8 @@ const App: React.FC = () => {
                 <Route path={ROUTES.TRANSFERS} element={<TransfersPage />} />
                 <Route path={ROUTES.PAGE403} element={<ForbiddenPage />} />
                 <Route path={ROUTES.PAGE404} element={<NotFoundPage />} />
+                <Route path={ROUTES.EDIT_BAGGAGES} element={<EditBaggagesPage />} />
+                <Route path={`${ROUTES.EDIT_BAGGAGES}/:id`} element={<EditBaggagePage />} />
             </Routes>
         </BrowserRouter>
     );

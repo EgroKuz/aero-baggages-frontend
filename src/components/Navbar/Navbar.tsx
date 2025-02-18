@@ -10,6 +10,7 @@ export const BasicNavbar = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const isAuthenticated = useAppSelector((state) => state.user.is_authenticated);
+  const isStaff = useAppSelector((state) => state.user.is_staff);
   const username = useAppSelector((state) => {
     return state.user.username;
 });
@@ -37,7 +38,17 @@ export const BasicNavbar = () => {
           </NavLink>
 
           {isAuthenticated ? (
-            <>
+            <>{isStaff ? (
+              <>
+              <div className="nav-item">
+                <NavLink  to={`${ROUTES.EDIT_BAGGAGES}`} className="nav__link">
+                    Редактировать
+                </NavLink>
+              </div>
+              </>
+            ):
+            <></>
+            }
               <div className="nav-item">
                 <NavLink  to={`${ROUTES.TRANSFERS}`} className="nav__link">
                     Заявки

@@ -25,6 +25,15 @@
     margin-right: 200px;
 }
 
+.action-button{
+    margin-bottom: 1px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 5px 10px;
+    background-color: #14A0E6;
+    color: white;
+}
 
 .transfers-table-container {
     padding: 20px 20px 20px 20px;

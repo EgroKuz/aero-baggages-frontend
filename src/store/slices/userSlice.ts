@@ -9,6 +9,7 @@ const initialState:T_User = {
     username: "",
     email: "",
     password: "",
+    is_staff: false,
     is_authenticated: false,
     validation_error: false,
     validation_success: false,
@@ -22,17 +23,13 @@ const initialState:T_User = {
 export const handleLogin = createAsyncThunk<T_User, T_LoginCredentials>(
     "login",
     async function ({ username, password }: T_LoginCredentials) {
-        const formData = new URLSearchParams();
-        formData.append("username", username);
-        formData.append("password", password);
-        
-        const response = await api.users.usersLoginCreate(
-          { username, password },  
-          { headers: { "Content-Type": "application/x-www-form-urlencoded" } }  
-        ) as unknown as AxiosResponse<T_User>;
-        console.log("Full API response:", response);
-        console.log("API response data:", response.data);
-        
+        const response = await api.users.usersLoginCreate({
+            username,
+            password
+        }) as unknown as AxiosResponse<T_User>;
+        console.log(response.data.username);
+        console.log("Запрос выполнен, ответ:", response.data);
+
         return response.data;
     }
 );
@@ -40,8 +37,6 @@ export const handleLogin = createAsyncThunk<T_User, T_LoginCredentials>(
 export const handleRegister = createAsyncThunk<T_User, T_RegisterCredentials>(
     "register",
     async function ({ username, email, password, first_name, last_name }: T_RegisterCredentials) {
-        // Логируем данные перед отправкой
-        console.log("Register data to send:", { username, email, password, first_name, last_name });
 
         const response = await api.users.usersRegisterCreate({
             username,
@@ -50,8 +45,6 @@ export const handleRegister = createAsyncThunk<T_User, T_RegisterCredentials>(
             first_name,
             last_name
         }) as unknown as AxiosResponse<T_User>;
-
-        console.log("Response received:", response);
 
         return response.data;
     }
@@ -95,12 +88,11 @@ const userReducer = createSlice({
     extraReducers: (builder) => {
         builder.addCase(handleLogin.fulfilled, (state: T_User, action: PayloadAction<T_User>) => {
             console.log(action.payload)
-            console.log("User data received from API:", action.payload);
-    
             state.is_authenticated = true;
             state.id = action.payload.id;
             state.username = action.payload.username;
             state.email = action.payload.email;
+            state.is_staff = action.payload.is_staff;
             state.password = action.payload.password
             state.first_name = action.payload.first_name
             state.last_name = action.payload.last_name
@@ -110,6 +102,7 @@ const userReducer = createSlice({
             state.id = action.payload.id;
             state.username = action.payload.username;
             state.email = action.payload.email;
+            state.is_staff = action.payload.is_staff;
             state.password = action.payload.password
             state.first_name = action.payload.first_name
             state.last_name = action.payload.last_name

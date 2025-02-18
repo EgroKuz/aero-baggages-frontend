@@ -18,6 +18,7 @@ export type T_TransfersFilters = {
   date_formation_start: string;
   date_formation_end: string;
   status: string;
+  author: string;
 };
 
 const initialState: T_TransfersState = {
@@ -26,6 +27,7 @@ const initialState: T_TransfersState = {
   transfer: null,
   transfers: [],
   filters: {
+    author: "",
     status: "",
     date_formation_start: PREV_YEAR.toISOString().split("T")[0],
     date_formation_end: NEXT_YEAR.toISOString().split("T")[0],
@@ -141,6 +143,38 @@ export const updateTransfer = createAsyncThunk<void, Partial<T_Transfer>, { stat
       await api.transfer.transferUpdateBaggageTransferUpdate(String(transfer.id), baggage_id);
     }
   );
+
+  export const completeTransfer = createAsyncThunk("transfers/completeTransfer", async (id: number, { rejectWithValue }) => {
+    try {
+      const response = await api.transfers.transfersUpdateStatusAdminUpdate(String(id), { status: "completed" });
+      if (!response.data) {
+        throw new Error("Не удалось завершить заявку");
+      }
+      return id;
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        return rejectWithValue(`Ошибка при завершении заявки с ID ${id}: ${error.message}`);
+      } else {
+        return rejectWithValue("Неизвестная ошибка при завершении заявки.");
+      }
+    }
+  });
+
+  export const rejectTransfer = createAsyncThunk("transfers/rejectTransfer", async (id: number, { rejectWithValue }) => {
+    try {
+      const response = await api.transfers.transfersUpdateStatusAdminUpdate(String(id), { status: "rejected" });
+      if (!response.data) {
+        throw new Error("Не удалось отклонить заявку");
+      }
+      return id;
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        return rejectWithValue(`Ошибка при отклонении заявки с ID ${id}: ${error.message}`);
+      } else {
+        return rejectWithValue("Неизвестная ошибка при отклонении заявки.");
+      }
+    }
+  });
 
 const transfersSlice = createSlice({
   name: "transfers",
